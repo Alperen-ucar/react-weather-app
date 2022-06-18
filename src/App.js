@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
 import axios from 'axios';
 import './App.css';
+import { AppProvider } from './context/AppContext';
 
 function App() {
   const [city, setCity] = useState();
@@ -34,16 +35,18 @@ function App() {
 
   return (
     <div className="App">
-      <select onChange={(e) => handleChange(e)}>
-        <option value="Adana">Adana</option>
-        <option value="Ankara">Ankara</option>
-        <option value="Bursa">Bursa</option>
-        <option value="İzmir">İzmir</option>
-        <option value="İstanbul">İstanbul</option>
-      </select>
-      <hr />
-      <h1 style={{textAlign: 'center'}}>{city.city.name}</h1> 
-      <Card city={city} />
+      <AppProvider>
+        <select onChange={(e) => handleChange(e)}>
+          <option value="Adana">Adana</option>
+          <option value="Ankara">Ankara</option>
+          <option value="Bursa">Bursa</option>
+          <option value="İzmir">İzmir</option>
+          <option value="İstanbul">İstanbul</option>
+        </select>
+        <hr />
+        <h1 style={{textAlign: 'center'}}>{city.city.name}</h1> 
+        <Card city={city} />
+      </AppProvider>
     </div>
   );
 }
