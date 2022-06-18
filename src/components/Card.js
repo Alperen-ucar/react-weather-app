@@ -1,9 +1,12 @@
-import React from 'react'
+import { useContext } from 'react'
+import MyContext from '../context/AppContext'
 
-function Card({ city }) {
+function Card() {
+  let {city} = useContext(MyContext);
+  
   return (
     <div>
-      <div className='cards'>  
+      <div className='cards'>
         <div className='card' >
             <div className='cardHead' style={{backgroundColor: 'gray'}}>
                 <img src={`http://openweathermap.org/img/w/${city.list[0].weather[0].icon}.png`} style={{backgroundColor: 'gray'}} />
